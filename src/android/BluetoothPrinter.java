@@ -19,7 +19,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Handler;
-import android.od.ParcelUuid;
+import android.os.ParcelUuid;
 import android.util.Log;
 
 import android.app.Activity;
