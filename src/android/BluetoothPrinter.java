@@ -214,15 +214,28 @@ public class BluetoothPrinter extends CordovaPlugin {
                 Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 this.cordova.getActivity().startActivityForResult(enableBluetooth, 0);
             }
+            Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+            if (pairedDevices.size() > 0) {
                 JSONArray json = new JSONArray();
-                Method getUuidsMethod = BluetoothAdapter.class.getDeclaredMethod("getUuids", null);
-                ParcelUuid[] uuids = (ParcelUuid[]) getUuidsMethod.invoke(mBluetoothAdapter, null);
+                for (BluetoothDevice device : pairedDevices) {
+                    ParcelUuid[] uuids = device.getUuids();
+                    Hashtable map = new Hashtable(); map.put("type", device.getType());
+                    map.put("address", device.getAddress()); map.put("name", device.getName());
+                    map.put("uuid", uuids[0].getUuid().toString());
+                    JSONObject jObj = new JSONObject(map);
 
-                for (ParcelUuid uuid: uuids) {
-                    json.put(uuid.getUuid().toString());
+                    Log.v(LOG_TAG, "DEVICE getName-> " + device.getName());
+                    Log.v(LOG_TAG, "DEVICE getAddress-> " + device.getAddress());
+                    Log.v(LOG_TAG, "DEVICE getType-> " + device.getType());
+                    // json.put(device.getName());
+                    // json.put(device.getAddress());
+                    // json.put(device.getType());
+                    json.put(jObj);
                 }
-                
                 callbackContext.success(json);
+            } else {
+                callbackContext.error("NO BLUETOOTH DEVICE FOUND");
+            }
             // Log.d(LOG_TAG, "Bluetooth Device Found: " + mmDevice.getName());
         } catch (Exception e) {
             errMsg = e.getMessage();
