@@ -220,6 +220,7 @@ public class BluetoothPrinter extends CordovaPlugin {
 
                     Hashtable map = new Hashtable(); map.put("type", device.getType());
                     map.put("address", device.getAddress()); map.put("name", device.getName());
+                    map.put("uuids", device.getUuids());
                     JSONObject jObj = new JSONObject(map);
 
                     Log.v(LOG_TAG, "DEVICE getName-> " + device.getName());
