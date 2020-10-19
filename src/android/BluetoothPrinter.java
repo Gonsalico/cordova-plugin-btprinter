@@ -19,6 +19,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Handler;
+import android.od.ParcelUuid;
 import android.util.Log;
 
 import android.app.Activity;
@@ -217,10 +218,10 @@ public class BluetoothPrinter extends CordovaPlugin {
             if (pairedDevices.size() > 0) {
                 JSONArray json = new JSONArray();
                 for (BluetoothDevice device : pairedDevices) {
-
+                    ParcelUuid[] uuids = device.getUuids();
                     Hashtable map = new Hashtable(); map.put("type", device.getType());
                     map.put("address", device.getAddress()); map.put("name", device.getName());
-                    map.put("uuids", device.getUuids());
+                    map.put("uuid", uuids[0].getUuid());
                     JSONObject jObj = new JSONObject(map);
 
                     Log.v(LOG_TAG, "DEVICE getName-> " + device.getName());
