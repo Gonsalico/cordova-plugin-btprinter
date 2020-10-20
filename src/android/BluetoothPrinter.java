@@ -263,6 +263,7 @@ public class BluetoothPrinter extends CordovaPlugin {
                     }
                 }
             }
+            callbackContext.error("Nombre: "+ name);
             Log.d(LOG_TAG, "BLUETOOTH DEVICE FOUND: " + mmDevice.getName());
         } catch (Exception e) {
             String errMsg = e.getMessage();
