@@ -290,7 +290,7 @@ public class BluetoothPrinter extends CordovaPlugin {
             String errMsg = e.getMessage();
             Log.e(LOG_TAG, errMsg);
             e.printStackTrace();
-            callbackContext.error("CAN'T CONNECT TO THE PRINTER");
+            callbackContext.error(errMsg);
         }
         return false;
     }
