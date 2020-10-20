@@ -218,10 +218,8 @@ public class BluetoothPrinter extends CordovaPlugin {
             if (pairedDevices.size() > 0) {
                 JSONArray json = new JSONArray();
                 for (BluetoothDevice device : pairedDevices) {
-                    ParcelUuid[] uuids = device.getUuids();
                     Hashtable map = new Hashtable(); map.put("type", device.getType());
                     map.put("address", device.getAddress()); map.put("name", device.getName());
-                    map.put("uuid", uuids);
                     JSONObject jObj = new JSONObject(map);
 
                     Log.v(LOG_TAG, "DEVICE getName-> " + device.getName());
@@ -279,7 +277,7 @@ public class BluetoothPrinter extends CordovaPlugin {
     boolean connectBT(CallbackContext callbackContext) throws IOException {
         try {
             // Standard SerialPortService ID
-            UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+            UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34F");
             mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
             mmSocket.connect();
             mmOutputStream = mmSocket.getOutputStream();
