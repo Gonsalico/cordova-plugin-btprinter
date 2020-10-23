@@ -291,7 +291,7 @@ public class BluetoothPrinter extends CordovaPlugin {
             try {
                 mmSocket =(BluetoothSocket) mmDevice.getClass().getMethod("createRfcommSocket", new Class[] {int.class}).invoke(mmDevice,1);
             } catch (Exception ex) {
-                String errMsg = ex.getMessage()
+                String errMsg = ex.getMessage();
                 Log.e(LOG_TAG, errMsg);
                 ex.printStackTrace();
                 callbackContext.error(errMsg);
