@@ -25,6 +25,7 @@ public class KubboPrinter extends CordovaPlugin{
             print(callbackContext, pdfFileBase64);
             return true;
         }
+        return false;
     }
     
     void print(CallbackContext callbackContext, String pdfFileBase64) {
@@ -59,5 +60,7 @@ public class KubboPrinter extends CordovaPlugin{
             Log.e(LOG_TAG, errMsg);
             callbackContext.error(errMsg);
         }
+
+        return null;
     }
 }
