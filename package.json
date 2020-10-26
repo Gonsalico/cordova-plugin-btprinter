@@ -1,20 +1,19 @@
 {
-  "name": "cordova-plugin-btprinter",
+  "name": "cordova-plugin-kubbo-platform",
   "version": "0.0.1-dev",
-  "description": "A cordova plugin for bluetooth printer for android platform.",
+  "description": "A cordova plugin for print labels in ZPL for android platform",
   "cordova": {
-    "id": "cordova-plugin-btprinter",
+    "id": "cordova-plugin-kubbo-platform",
     "platforms": [
       "android"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CesarBalzer/Cordova-Plugin-BTPrinter.git"
+    "url": "git+https://github.com/Gonsalico/cordova-plugin-kubbo-printer.git"
   },
   "keywords": [
     "cordova",
-    "bluetooth",
     "printer",
     "pos",
     "text",
@@ -34,7 +33,7 @@
   "author": "Cesar E. Balzer",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/CesarBalzer/Cordova-Plugin-BTPrinter/issues"
+    "url": "https://github.com/Gonsalico/cordova-plugin-kubbo-printer/issues"
   },
-  "homepage": "https://github.com/CesarBalzer/Cordova-Plugin-BTPrinter#readme"
+  "homepage": "https://github.com/Gonsalico/cordova-plugin-kubbo-printer#readme"
 }

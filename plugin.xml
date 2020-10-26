@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-btprinter"
+        id="cordova-plugin-kubbo-printer"
         version="0.0.1-dev">
 
-   <name>BTPrinter</name>
-   <description>A cordova plugin for bluetooth printer for android platform.</description>
+   <name>Kubbo Printer</name>
+   <description>A cordova plugin for print labels in ZPL for android platform.</description>
 
-   <repo>https://github.com/CesarBalzer/Cordova-Plugin-BTPrinter</repo>
+   <repo>https://github.com/Gonsalico/cordova-plugin-kubbo-printer</repo>
    <license>Apache 2.0</license>
-   <keywords>cordova, bluetooth, printer, pos, text, barcode, image, base64, qrcode</keywords>
+   <keywords>cordova, printer, pos, text, barcode, image, base64, qrcode</keywords>
 
-   <author>Cesar E. Balzer</author>
+   <author>Sergio Sanchis And Gonzalo Paniagua</author>
 
    <!-- cordova -->
    <engines>
       <engine name="cordova" version=">=3.0.0" />
    </engines>
 
-   <js-module src="www/BluetoothPrinter.js" name="BluetoothPrinter">
-      <clobbers target="BTPrinter" />
+   <js-module src="www/KubboPrinter.js" name="KubboPrinter">
+      <clobbers target="KPrinter" />
    </js-module>
 
    <!-- android -->
    <platform name="android">
       <config-file target="res/xml/config.xml" parent="/*">
-         <feature name="BluetoothPrinter">
-            <param name="android-package" value="br.com.cordova.printer.bluetooth.BluetoothPrinter"/>
+         <feature name="KubboPrinter">
+            <param name="android-package" value="br.com.cordova.printer.kubbo.KubboPrinter"/>
          </feature>
       </config-file>
 
@@ -34,7 +34,7 @@
          <uses-permission android:name="android.permission.BLUETOOTH" />
       </config-file>
 
-      <source-file src="src/android/BluetoothPrinter.java" target-dir="src/br/com/cordova/printer/bluetooth" />
+      <source-file src="src/android/KubboPrinter.java" target-dir="src/br/com/cordova/printer/kubbo" />
 
    </platform>
 </plugin>
