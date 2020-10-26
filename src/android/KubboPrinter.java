@@ -32,7 +32,7 @@ public class KubboPrinter extends CordovaPlugin{
             Log.d(LOG_TAG, "STARTING PRINT");
             // The line below illustrates the default port 6101 for mobile printers 9100 is the default port number
             // for desktop and tabletop printers
-            DataOutputStream outToServer = new DataOutputStream(getSocket().getOutputStream() );
+            DataOutputStream outToServer = new DataOutputStream(getSocket(callbackContext).getOutputStream() );
             //The data being sent in the lines below illustrate CPCL  one can change the data for the corresponding
             //language being used (ZPL, EPL)
             outToServer.writeBytes(pdfFileBase64);
@@ -45,7 +45,7 @@ public class KubboPrinter extends CordovaPlugin{
         }
     }
 
-    Socket getSocket() {
+    Socket getSocket(CallbackContext callbackContext) {
 
         try {
             if(Objects.isNull(this.clientSocket)) {
