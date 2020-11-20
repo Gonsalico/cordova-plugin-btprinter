@@ -20,12 +20,14 @@ public class KubboPrinter extends CordovaPlugin{
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("printTest")) {
+        if (action.equals("print")) {
             String pdfFileBase64 = args.getString(0);
             String ipPrinter = args.getString(1);
             String portPrinter = args.getString(2);
             print(callbackContext, pdfFileBase64, ipPrinter, portPrinter);
             return true;
+        } else if (action.equals("disconnect")) {
+            disconnect(callbackContext);
         }
         return false;
     }
@@ -64,5 +66,17 @@ public class KubboPrinter extends CordovaPlugin{
         }
 
         return null;
+    }
+
+    void disconnectSocket(CallbackContext callbackContext) {
+        try {
+            this.clientSocket.close();
+            this.clientSocket = null;
+        } catch (Exception ex) {
+            this.clientSocket = null;
+            String errMsg = ex.getMessage();
+            Log.e(LOG_TAG, errMsg);
+            callbackContext.error(errMsg);
+        }
     }
 }
