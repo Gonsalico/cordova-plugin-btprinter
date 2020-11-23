@@ -27,7 +27,7 @@ public class KubboPrinter extends CordovaPlugin{
             print(callbackContext, pdfFileBase64, ipPrinter, portPrinter);
             return true;
         } else if (action.equals("disconnect")) {
-            disconnect(callbackContext);
+            disconnectSocket(callbackContext);
         }
         return false;
     }
